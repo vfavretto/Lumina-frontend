@@ -44,7 +44,6 @@ export const AuthProvider = ({ children }) => {
 
   const handleRegister = async (fullName, email, password) => {
     try {
-      console.log(`${backend}/api/auth/register`)
       const response = await axios.post(
         `${backend}/api/auth/register`,
         {
