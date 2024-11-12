@@ -1,0 +1,191 @@
+.body {
+  background-color: #262625;
+  font-family: "Poppins", sans-serif;
+}
+
+.paginaParceiros {
+  padding: 0 8%;
+}
+
+/* BotoesP styles */
+.botoesPrincipais {
+  background-color: #626262;
+  border-radius: 25px;
+  padding: 5px;
+  position: relative;
+  margin-bottom: 3%;
+  margin-top: 5%;
+}
+
+.botaoContainer {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+}
+
+.botao {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.botaoAnimado {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(40deg,
+  #2fac66,
+  #2b4b5f 25%,
+  #292b5d 36%,
+  #29235c 65%,
+  #2a375d 73%,
+  #2fac66);
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.posEmpresa {
+  transform: translateX(0);
+}
+
+.posFornecedor {
+  transform: translateX(100%);
+}
+
+/* Existing Partners styles */
+.textoParceiros {
+  width: 100%;
+}
+
+.textoParceiros h2 {
+  color: #12a19a;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.textoParceiros p {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-transform: capitalize;
+}
+
+.botoesParceiros {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 25px;
+}
+
+.botoesParceiros button {
+  width: 87.619px;
+  height: 80px;
+  flex-shrink: 0;
+  flex-direction: row;
+  border-radius: 20px;
+  background: #129e97;
+  padding: 5px 15px;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  justify-content: flex-end;
+  border: none;
+  color: #ffffff;
+  font-size: 40px;
+  margin: 0 10px;
+}
+
+.botoesParceiros button:hover {
+  background: #0f8c85;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+#buscarEmpresa {
+  width: 300px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #626262;
+  color: #626262;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.buscarEmpresa {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.empresas {
+  background-image: url(.././images/parceiros/fundo.png);
+  padding: 5%;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.listaEmpresas {
+  border-radius: 20px;
+}
+
+.imgParceiros {
+  padding: 0% 2% 1% 0%;
+}
+
+.itemParceiros {
+  margin-bottom: 2%;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.trabalheConosco {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.trabalheConosco h2 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+.botaoGeral {
+  width: 197px;
+  height: 60px;
+  border-radius: 13px;
+  border: 1px solid #2fac66;
+  background: #12a19a;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.botaoGeral:hover {
+  background: #0f8c85;
+  transform: scale(1.05);
+}
+
+.botoesDiv {
+  margin: 5% 0 3%;
+}

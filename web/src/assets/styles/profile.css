@@ -1,0 +1,133 @@
+#perfil {
+    background-color: rgb(26, 26, 25);
+
+}
+
+.perfilFoto {
+    border-radius: 50%;
+    width: 85%;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+    margin: 10%;
+}
+
+.perfilNome {
+    color: var(--branco, #FFF);
+    font-family: Poppins;
+    font-size: 250%;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.perfilCargo {
+
+    color: var(--branco, #FFF);
+    font-family: Poppins;
+    font-size: 170%;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+}
+
+.perfilEmpresa {
+    color: #2FAC66;
+    font-family: Poppins;
+    font-size: 110%;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+
+
+#perfil h5 {
+    margin-left: 10%;
+}
+
+#perfil p {
+    color: #FFFFFF;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    font-family: Poppins;
+    font-size: medium;
+    font-weight: 100;
+    text-align: justify;
+    line-height: 155%;
+
+}
+
+.perfilMensagens {
+    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.40);
+
+}
+
+.perfilMsgimg {
+    width: 100%;
+}
+
+
+#perfilMsg h1 {
+    color: #FFFF;
+    text-align: left;
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 200%;
+    margin-left: 15%;
+
+}
+
+#sininhoPerfil {
+    color: var(--branco);
+    font-size: 180%;
+
+
+}
+
+#perfilFoto img {
+    width: 100px;
+    border-radius: 50%;
+    margin: 0px 50px;
+}
+
+#perfilFoto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nomepessoa p {
+    margin-top: 1%;
+    font-size: small;
+    text-align: left;
+    margin-bottom: 0%;
+}
+
+#bolinha {
+    color: #129E97;
+    margin: 0% 8%;
+}
+
+#nomepessoa h2 {
+    color: #12A19A;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#perfilFotinha {
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 4%;
+}
+
+#perfilMsg div {
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-right: 8%;
+    margin-bottom: 2%;
+}

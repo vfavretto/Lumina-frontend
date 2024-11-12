@@ -1,0 +1,83 @@
+:root {
+    --cinzinha: #626262;
+    --branco: #FFFFFF;
+    --cor-5: #2FAC66;
+    --fundo-1: #262625;
+    --ativo: #12A19A;
+}
+
+.body {
+    background-color: #262625;
+}
+
+.navbar {
+    flex-wrap: nowrap;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+}
+
+.navbar-brand img {
+    width: 223.636px;
+    height: 60px;
+    margin: 25px 0px 15px 2.97%;
+}
+
+.nav-link {
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.navbar-nav .nav-link.active {
+    color: #12A19A;
+    font-weight: 700;
+}
+
+#buscar {
+    width: auto;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid #626262;
+    color: #626262;
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    border-radius: inherit;
+}
+
+#loginBtn {
+    width: 179px;
+    height: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 8px 39px;
+    border-radius: 15px;
+    border: none;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.50);
+    background: rgb(47, 172, 102);
+    background: linear-gradient(133deg,
+            rgba(47, 172, 102, 1) 0%,
+            rgba(41, 35, 92, 1) 50%,
+            rgba(41, 35, 92, 1) 61%,
+            rgba(47, 172, 102, 1) 100%);
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+    display: inline-block;
+}
+
+@media (max-width:1199px) {
+    .sidebar {
+        background-color: #2626253c;
+    }
+}

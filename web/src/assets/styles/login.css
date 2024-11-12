@@ -1,0 +1,114 @@
+:root {
+  --cinzinha: #626262;
+  --branco: #FFFFFF;
+  --cor-5: #2FAC66;
+  --fundo-1: #262625;
+  --ativo: #12A19A;
+  /* --bs-body-bg: #40403F; */
+}
+
+.body {
+  background-color: #262625;
+}
+
+div .formsCadastro form {
+  border: 2px solid;
+  width: 100%;
+  padding-bottom: 30%;
+  border-radius: 10px;
+  background-color: #262625;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 43px;
+
+}
+
+.textCadastro h3 {
+  justify-content: center;
+  margin-top: 100px;
+  height: 41px;
+  margin-bottom: 120px;
+}
+
+.formsCadastro input {
+  background-color: lightgrey;
+}
+
+.formsCadastro input:focus {
+  background-color: white;
+}
+
+.bemVindo h2 {
+  justify-content: center;
+  margin-top: 100px;
+  height: 41px;
+  margin-bottom: 120px;
+}
+
+.bemVindo input {
+  background-color: lightgrey;
+}
+
+.bemVindo input:focus {
+  background-color: white;
+}
+
+.formularioCadastro .col-form-label {
+  margin-bottom: 38px;
+}
+
+
+div .divMae {
+  flex-shrink: 0;
+  border-radius: 10px;
+  padding-top: 5%;
+
+}
+
+div .bemVindo .btnLogin {
+  margin-bottom: 45px;
+}
+
+.risquinho {
+  border: 0;
+  height: 2px;
+  background: #A0BB9C;
+}
+
+div .or {
+  font-size: 28px;
+  text-align: center;
+}
+
+div .welcome path {
+  margin-right: 20px;
+  width: 33px;
+  height: 39px;
+  flex-shrink: 0;
+}
+
+div .welcome svg path {
+  margin-right: 15px;
+}
+
+.fundinRegistro {
+  background-color: #111113e5;
+  border-radius: 10px;
+  margin-left: 8%;
+  margin-right: 8%;
+
+}
+
+.zikaMargem {
+  margin-right: 3%;
+}
+
+.imagemBaixo {
+  margin-bottom: 0%;
+  padding: 0px;
+}
+
+.baixoImg {
+  width: 100%;
+  border-radius: 0px 0px 10px 10px;
+  margin-top: 2%;
+}

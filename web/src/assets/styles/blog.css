@@ -1,0 +1,93 @@
+.blog {
+    margin-bottom: 3%;
+}
+
+.maisLidaTop {
+    margin-top: 20%;
+}
+
+.maisLidas {
+    border-radius: 15px;
+    border-radius: 15px;
+    background: url(../../assets/images/fundoBlog.png);
+    background-size: cover;
+    padding: 12% 10%;
+    margin-right: 20%;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+}
+
+.maisLidas h2 {
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 10%;
+}
+
+.maisLidas li {
+    color: #FFFFFF;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 65px;
+    margin-left: 12%;
+}
+
+.maisLidas li::marker {
+    color: #262625;
+    font-family: Poppins;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.blog img {
+    margin-right: 16px;
+}
+
+.textoBlog h2 {
+    color: #12A19A;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-top: 16px;
+}
+
+.textoBlog p {
+    color: #FFFFFF;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-top: 16px;
+}
+
+.botaoGeral {
+    width: 197px;
+    height: 60px;
+    border-radius: 13px;
+    border: 1px solid #2FAC66;
+    background: #12A19A;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.50);
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+li::marker {
+   color: #2FAC66;
+}

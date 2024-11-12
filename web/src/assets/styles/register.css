@@ -1,0 +1,129 @@
+body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+  }
+
+   
+  .profile-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+   
+  h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 300%;
+  }
+   
+  h2 {
+    color: #ffffff;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    font-weight: 700;
+    text-align: center;
+  }
+   
+  form {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 8px;
+  }
+   
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #3a3a3a;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+  }
+   
+  input::placeholder, select::placeholder, textarea::placeholder {
+    color: #999999;
+  }
+   
+  .row {
+    display: flex;
+    gap: 15px;
+  }
+   
+  .row input, .row select {
+    flex: 1;
+  }
+   
+  textarea {
+    height: 100px;
+    resize: vertical;
+  }
+.saveButton{
+    display: flex;
+    justify-content: space-evenly
+}
+  .save-button {
+    background-color: #2FAC66;
+    color: #ffffff;
+    border: none;
+    padding: 12px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 20%;
+    margin-top: 20px;
+    align-content: center;
+  }
+   
+  .save-button:hover {
+    background-color: #2FAC66;
+  }
+   
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    display: block;
+    border: 3px solid #2FAC66;
+  }
+   
+  /* Add styles for the header if needed */
+  .header {
+    background-color: #2a2a2a;
+    padding: 10px 0;
+  }
+   
+  .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+   
+  .logo {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+   
+  .nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+   
+  .login-button {
+    background-color: #2FAC66;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+
+  .formRedes{
+    padding-top: 3%;
+  }
