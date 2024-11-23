@@ -5,190 +5,122 @@
 
 </div>
 
+<h1 align="center">Sprint 2: 04/09/2024 a 05/10/2024</h1>
+
 <p align="center">
-    <a href="#sobre">Sobre</a>  |  
-    <a href="#backlog">Backlog & User Stories</a>  |  
-    <a href="#mer">MER & Collections</a>  |  
-    <a href="#prototipos">Protótipos & Documentação</a>  |  
-    <a href="#tecnologias">Tecnologias</a>  |  
-    <a href="#equipe">Equipe</a>
+    <a href="#objetivo">Objetivos da Sprint</a>  |  
+    <a href="#entrega">Entregas</a>  |
+    <a href="#estrutura">Estruturação das Sprints</a>  |
+    <a href="#links">Links úteis</a>  
 </p>
 
-<span id="sobre">
+  Implementar as principais funcionalidades relacionadas à experiência do usuário no sistema, incluindo o cadastro, login e autenticação. O objetivo é garantir que os usuários possam acessar o sistema de maneira segura e intuitiva, utilizando APIs de autenticação modernas e tokens que asseguram a proteção dos dados. Essa etapa é crucial para criar uma estrutura confiável de interação com o sistema, fornecendo a base para o gerenciamento de usuários e funcionalidades personalizadas. Além disso, serão realizadas validações de dados e testes iniciais para assegurar a robustez das funcionalidades.
+
+<span id="objetivo">
   
-## :page_facing_up: Sobre o Projeto
-  Projeto de plataforma digital que integra empresas que oferecem serviços a cerca da sustentabilidade, empresas que fornecem serviços encontram empresas que precisam dos seviços podendo se contatar. A inclusão de governos e ONGs como partes interessadas amplia o alcance do projeto, transformando-o em um hub abrangente para diversos setores comprometidos com a sustentabilidade. Essa abordagem holística  reflete a ambição do projeto em catalisar não apenas a mudança no âmbito empresarial, mas também influenciar políticas públicas e iniciativas sociais em prol de um futuro mais sustentável. O Lumina não apenas compartilha conhecimento, mas aspira a ser um catalisador para transformações positivas em escala global, unindo diversos agentes para enfrentar os desafios contemporâneos de maneira colaborativa.
+## :dart: Objetivos da Sprint
 
-> _Projeto baseado na metodologia ágil SCRUM, procurando desenvolver a Proatividade, Autonomia, Colaboração e Entrega de Resultados_
+Os requisitos funcionais e não funcionais contemplados nesta sprint são:
+  
+### Requisitos Funcionais:
 
-### :link: Projeto disponível para visualização em [Lumina](https://lumina3-0.vercel.app/)
+- **RF 01:** Login 
+- **RF 02:** Cadastro
+  
+### Requisitos Não Funcionais:
 
-## 🏁 Entregas de Sprints
+- **RNF 01:** Linguagem de programação JavaScript e TypeScript.
+- **RNF 02:** Banco de dados MongoDB.
+- **RNF 03:** Interface de fácil usabilidade para todas as faixas etárias.
 
-| Sprint | Previsão | Status |
-|:--:|:----------:|:----------------:|
-| 01 | 30/08/2024 |  Concluída  ✔️  | 
-| 02 | 05/10/2024 |  Concluída  ✔️  | 
-| 03 | 04/11/2024 |  Concluída  ✔️  | 
-| 04 | 30/11/2024 |      | 
+→ [Voltar ao topo](#topo)
 
+<span id="entrega">
 
-## :pushpin: **Sprint 01: Preparação e Fundamentos**
- 
-**Objetivo:** 
-Estabelecer a base do projeto com tecnologias principais, estrutura de dados, e protótipo inicial.
- 
-Migração das Páginas de Angular para React:
-- Criação do esqueleto básico do projeto em React.
-- Conversão dos componentes do Angular para React.
-- Implementação do header, footer e navegação inicial.
- 
-Estruturação do Banco de Dados:
-- Definição do modelo lógico do banco de dados.
-- Criação do MER (Modelo Entidade-Relacionamento).
-- Configuração do MongoDB e criação das coleções principais.
- 
-Avaliação de Protótipo de Alta Fidelidade:
-- Ajustes necessários do protótipo no Figma.
- 
-Arquitetura MVC:
-- Implementação da estrutura base seguindo o padrão MVC.
-- Configuração do servidor com rotas iniciais.
- 
-Implementação de Microsserviço:
-- Planejamento de um microsserviço que será integrado ao sistema.
-- Configuração inicial do microsserviço.
+## :heavy_check_mark: Entregas
 
- 
-## :pushpin: **Sprint 02: Funcionalidades de Usuário**
+Nesta sprint, o foco foi na implementação de funcionalidades para cadastro e autenticação, além de melhorias na documentação e garantia de qualidade do código. As entregas foram:
 
-**Objetivo:** 
-Implementar funcionalidades essenciais para o cadastro e autenticação.
+### RF 01: Login
 
-Implementação da Página de Cadastro:
-- Criação de formulário funcional com validação de dados.
+<details>
+   <summary>Clique aqui para ver detalhes sobre o desenvolvimento deste requisito</summary>
+    <br>
+Aplicação do login social:
+  
+- Configuração de APIs de terceiros para autenticação.
+- Implementação de autenticação por tokens (JWT) para sessões seguras e escaláveis.
+  
+</details>
 
-Aplicação do Login Social:
-- Integração com APIs de autenticação.
-- Implementação de tokens de autenticação.
+### RF 02: Cadastro
 
+<details>
+   <summary>Clique aqui para ver detalhes sobre o desenvolvimento deste requisito</summary>
+    <br>
+Desenvolvimento de uma interface funcional para novos usuários:
+  
+- Formulário dinâmico com validação de campos obrigatórios (nome, e-mail, senha)
+- Integração com o backend para salvar os dados no MongoDB.
+
+</details>
+
+### RNF 01: Linguagem de programação JavaScript e TypeScript.
+<details>
+   <summary>Clique aqui para ver detalhes sobre o desenvolvimento deste requisito</summary>
+    <br>
 Documentação da API via Swagger:
-- Criação da documentação inicial da API REST.
-- Testes das rotas principais para garantir integridade e clareza.
-
+  
+- Criação da documentação inicial da API REST para endpoints de login e cadastro.
+  
 Testes Unitários:
-- Implementação de testes unitários com Jest.
+- Implementação de testes unitários utilizando Jest para verificar a funcionalidade e integridade das rotas principais de login e cadastro.
 
-
-## :pushpin: **Sprint 03: Melhorias e Ampliação**
-
-**Objetivo:** 
-Refinar as funcionalidades existentes e expandir o sistema com mais interatividade.
-
-Implementação da Página de Edição de Perfil:
-- Adicionar funcionalidade para alterar dados do perfil.
-  
-Refatoração da Página de Parceiros:
-- Conversão para React.
-- Implementação de lógica para busca e filtros.
-  
-Criação do Diagrama UML de Classes:
-- Documentação completa do relacionamento entre classes.
-- Inclusão das classes de acesso ao banco de dados.
-  
-Avaliação Heurística da Página:
-- Revisão detalhada da usabilidade e acessibilidade da aplicação.
-
-## :pushpin: **Sprint 04: Finalização e Entrega**
-
-**Objetivo:** 
-Concluir o projeto com todas as funcionalidades integradas e a documentação completa.
-
-Implementação da Página de Blog:
-- Criação de interface para leitura e postagem de notícias.
-  
-Criação do Chat:
-- Configuração de comunicação.
-
-Documentação Completa do Projeto:
-- Organização de toda a documentação no GitHub.
-
-Apresentação:
-- Preparação da apresentação do projeto integrador.
-- Demonstração das principais funcionalidades e arquitetura do sistema.
-
-
-#### Detalhamento de Sprints disponível no [Jira](https://julinhasoares.atlassian.net/)
+</details>
 
 → [Voltar ao topo](#topo)
 
-<span id="backlog">
+<span id="estrutura">
   
-## :dart: Backlog e User Stories
+## :bookmark_tabs: Estruturação das Sprints
 
-![backlog](https://i.imgur.com/anMBNTF.png)
-![userstories](https://i.imgur.com/filHyZW.png)
+Para estruturar as entregas da sprint, os seguintes pontos foram realizados:
+
+### Cadastro de Usuários:
+
+- Implementação do formulário de cadastro com validações de entrada.
+- Integração com o banco de dados MongoDB para persistir informações de novos usuários.
+
+### Autenticação com Tokens:
+
+- Configuração de autenticação via JWT (JSON Web Token) para garantir segurança nas sessões.
+
+### Documentação da API com Swagger:
+
+- Criação da documentação inicial das rotas da API REST, incluindo exemplos de requisições para endpoints de cadastro e login.
+
+### Testes Unitários:
+
+- Implementação de testes para verificar a funcionalidade de autenticação e persistência de dados.
+
+### Aprimoramento da Arquitetura MVC
+- Refinamento das camadas de Controller e Model.
+- Adição de lógicas específicas para validação de credenciais e manipulação de dados no banco.
+- Separação clara das responsabilidades para facilitar manutenção.
 
 → [Voltar ao topo](#topo)
 
-<span id="mer">
+<span id="links">
   
-## :bookmark_tabs: MER e Collections
+## :link: Links úteis
 
-Acesse o [MER](https://i.imgur.com/FSLNTdy.png)
-
-Acesse nossas collections:
-
--[COLLECTION GERAL](https://i.imgur.com/oxN61W7.png)
-
--[COLLECTION SERVICO](https://i.imgur.com/ri2PXKC.png)
-
--[COLLECTION ADM](https://i.imgur.com/R8q5qvu.png)
-
-
-
-→ [Voltar ao topo](#topo)
-
-<span id="prototipos">
-
-## 💻 Protótipos e Documentação
-  No planejamento do projeto, foram criados wireframes e mockups para a idealização do layout da interface. Após a validação pelo cliente, esses elementos foram implementados em um protótipo desenvolvido em React, permitindo a interação do usuário com a interface.
-  
-  Adotou-se uma arquitetura orientada a microsserviços, que promove a descentralização e o isolamento de responsabilidades entre o front-end e o back-end. Essa abordagem garantiu que as funcionalidades fossem integradas de maneira eficiente por meio do consumo das APIs disponíveis. A documentação dos microsserviços, um requisito não funcional essencial para o projeto, foi realizada ao longo de todo o desenvolvimento utilizando ferramentas como Swagger e readmes nos repositórios, mapeando detalhadamente os endpoints de cada API.
-  
-  Além disso, outras documentações, como fluxos de dados, diagramas de classe e de uso, modelagem do banco de dados e arquitetura do sistema, foram organizadas e compiladas em um PDF.
-
-## Protótipo de Alta Fidelidade
-
-![Protótipo alta fidelidade](https://i.imgur.com/Q3AjUW8.png)
-
-#### O Protótipo foi construido usando o [Figma](https://www.figma.com/proto/s7gklcQtZwSzvlw5APOJWC/Lumina?node-id=0-1&t=dWRO7ttmqv7WQjlz-1)
-
-→ [Voltar ao topo](#topo)
-
-<span id="tecnologias">
-
-## :open_file_folder: Tecnologias
-
-|    Front-End     |     Back-End     | 
-| :-----------: | :------------------------------------ | 
-| ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) | 	![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) |
-| ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white) |
-| 	![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) | 	![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) |
-|   ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)   | ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) |
-
-→ [Voltar ao topo](#topo)
-
-<span id="equipe">
-
-## :busts_in_silhouette: Equipe
-
-|    Função     | Nome                                  |                                                                                                                                                      LinkedIn & GitHub                                                                                                                                                      |
-| :-----------: | :------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Scrum Master | Victor Favretto           |     [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](-) [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://www.github.com/vfavretto)              |
-| Product Owner  | Júlia Soares |      [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/julia-soares/) [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://www.github.com/julinhaarte)     |
-|   Dev Team    | Ana Laura Lazdenas               |         [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/ana-lazdenas/) [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/ablazd) |
-|   Dev Team    | Felipe Rodrigues                  |         [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](x) [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/felipe6san)        |
-|   Dev Team    | Murilo Rodrigues                |   [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](x) [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/Zan-Kir)   |
-
+- Site do projeto:
+  - [Lumina](lumina3-0.vercel.app/)
+  - [Front-end](lumina-frontend.vercel.app)
+  - [Back-end](lumina-backend-three.vercel.app/)
+  <br>
+- Repositório do site:
+  - [Front-end](https://github.com/vfavretto/Lumina-frontend)
+  - [Back-end](https://github.com/vfavretto/Lumina-backend)
+   
 → [Voltar ao topo](#topo)
