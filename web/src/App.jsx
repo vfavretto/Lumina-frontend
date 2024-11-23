@@ -10,6 +10,7 @@ import Login from "./views/pages/login.jsx";
 import Footer from "./views/components/common/footer.jsx";
 import Profile from "./views/pages/profile.jsx";
 import Register from "./views/pages/register.jsx";
+import Chat from "./views/components/common/chat.jsx";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
+          <Route path="chat" element={<Chat/>}/>
           <Route path="/about" element={<About />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/blog" element={<Blog />} />
