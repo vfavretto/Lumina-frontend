@@ -1,6 +1,11 @@
-// ChatApp.jsx
 import React, { useState, useRef, useEffect } from "react";
 import "../../../assets/styles/chat.css";
+
+const ChatMessage = ({ text, isSent }) => (
+  <div className={`message ${isSent ? "sent" : "received"}`}>
+    <div className="message-content">{text}</div>
+  </div>
+);
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -37,10 +42,6 @@ const Chat = () => {
 
   return (
     <div className="chat-page">
-      <div className={`message ${isSent ? "sent" : ""}`}>
-        <div className="message-avatar" />
-        <div className="message-content">{text}</div>
-      </div>
       <div className="chat-container">
         <div className="chat-header">
           <h2>Chat</h2>
@@ -63,7 +64,7 @@ const Chat = () => {
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyPress}
               placeholder="Digite sua mensagem..."
               className="message-input"
             />

@@ -67,11 +67,11 @@
   .message.sent .message-avatar {
     margin-right: 0;
     margin-left: 10px;
-    background-color: #009B98;
+    background-color: #2FAC66;
   }
   
   .message.sent .message-content {
-    background-color: #009B98;
+    background-color: #2FAC66;
   }
   
   .chat-input-container {
@@ -99,12 +99,12 @@
     padding: 12px 24px;
     border: none;
     border-radius: 25px;
-    background-color: #009B98;
+    background-color: #2FAC66;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
   .chat-send-button:hover {
-    background-color: #008885;
+    background-color: #1d7744;
   }
