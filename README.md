@@ -71,8 +71,6 @@ Implementação do fluxo de cadastro, que permite a criação de novos perfis de
 
 ![cadastro](https://i.imgur.com/HxLijjB.png)
 
-![cadastro2](https://i.imgur.com/3rUcaJ8.png)
-
 </details>
 
 → [Voltar ao topo](#topo)
