@@ -1,25 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/styles/partners.css";
 
 const Partners = () => {
-  const [ativo, setAtivo] = useState("EMPRESA");
+  const [ativo, setAtivo] = useState("CONTRATANTE");
+  const [dados, setDados] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+  const limit = 10;
 
-  const dados = {
-    EMPRESA: [
-      { id: 1, nome: "Empresa A", descricao: "Descrição da Empresa A", img: "imagem1.png" },
-      { id: 2, nome: "Empresa B", descricao: "Descrição da Empresa B", img: "imagem2.png" },
-      { id: 3, nome: "Empresa C", descricao: "Descrição da Empresa C", img: "imagem3.png" },
-    ],
-    FORNECEDOR: [
-      { id: 1, nome: "Fornecedor A", descricao: "Descrição do Fornecedor A", img: "fornecedor1.png" },
-      { id: 2, nome: "Fornecedor B", descricao: "Descrição do Fornecedor B", img: "fornecedor2.png" },
-      { id: 3, nome: "Fornecedor C", descricao: "Descrição do Fornecedor C", img: "fornecedor3.png" },
-    ],
+  const BASE_URL = "https://lumina-backend-three.vercel.app/api/v1/auth";
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const tipo = ativo === "CONTRATANTE" ? "contratante" : "fornecedor";
+      const response = await fetch(
+        `${BASE_URL}/enterprises?tipo=${tipo}&page=${currentPage}&limit=${limit}`
+      );
+      
+      if (!response.ok) {
+        throw new Error('Erro ao buscar dados');
+      }
+
+      const data = await response.json();
+      setDados(data.empresas || []); // Ajustado para usar data.empresas
+      setTotalPages(data.totalPages);
+      setTotalItems(data.totalEmpresas);
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error);
+      setDados([]);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, [ativo, currentPage]);
 
   const troca = (novoAtivo) => {
     setAtivo(novoAtivo);
+    setCurrentPage(1);
   };
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const filteredDados = dados.filter((item) =>
+    item.auth?.nomeEmpresa?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="body overflow-hidden">
@@ -28,13 +62,15 @@ const Partners = () => {
           <div className="arrumarBotoes">
             <div className="botaoContainer">
               <div
-                className={`botaoAnimado ${ativo === "EMPRESA" ? "posEmpresa" : "posFornecedor"}`}
+                className={`botaoAnimado ${
+                  ativo === "CONTRATANTE" ? "posEmpresa" : "posFornecedor"
+                }`}
               />
               <button
-                onClick={() => troca("EMPRESA")}
-                className={`botao ${ativo === "EMPRESA" ? "ativo" : ""}`}
+                onClick={() => troca("CONTRATANTE")}
+                className={`botao ${ativo === "CONTRATANTE" ? "ativo" : ""}`}
               >
-                Empresa
+                Contratante
               </button>
               <button
                 onClick={() => troca("FORNECEDOR")}
@@ -50,13 +86,17 @@ const Partners = () => {
           <form role="search">
             <input
               type="search"
-              placeholder={`Buscar ${ativo === 'EMPRESA' ? 'Empresas' : 'Fornecedores'}...`}
+              placeholder={`Buscar ${
+                ativo === "CONTRATANTE" ? "Contratantes" : "Fornecedores"
+              }...`}
               id="buscarEmpresa"
               name="buscarEmpresa"
+              value={searchTerm}
+              onChange={handleSearch}
               aria-label="Search"
             />
             <label htmlFor="buscarEmpresa">
-            <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="45"
                 height="45"
@@ -82,31 +122,60 @@ const Partners = () => {
         </div>
 
         <div className="empresas">
-          <div className="d-flex flex-column listaEmpresas">
-            {dados[ativo].map((item) => (
-              <div key={item.id} className="d-flex align-items-center itemParceiros">
-                <div className="imgParceiros">
-                  <img
-                    src={`../images/parceiros/${item.img}`}
-                    alt={`Parceiro ${item.nome}`}
-                    width="200"
-                  />
+          {loading ? (
+            <div className="text-center text-white">Carregando...</div>
+          ) : (
+            <div className="d-flex flex-column listaEmpresas">
+              {filteredDados.map((item) => (
+                <div key={item._id} className="d-flex align-items-center itemParceiros">
+                  <div className="imgParceiros">
+                    <img
+                      src={item.userImg || `../images/parceiros/default.png`}
+                      alt={`Parceiro ${item.auth.nomeEmpresa}`}
+                      width="200"
+                    />
+                  </div>
+                  <div className="textoParceiros">
+                    <h2>{item.auth.nomeEmpresa}</h2>
+                    <p>{item.servicos?.descricao || 'Descrição não disponível'}</p>
+                  </div>
+                  <div className="d-flex botoesParceiros">
+                    <button>
+                      <i className="fa fa-mouse-pointer" aria-hidden="true"></i>
+                    </button>
+                    <button>
+                      <i className="fa fa-phone" aria-hidden="true"></i>
+                    </button>
+                  </div>
                 </div>
-                <div className="textoParceiros">
-                  <h2>{item.nome}</h2>
-                  <p>{item.descricao}</p>
-                </div>
-                <div className="d-flex botoesParceiros">
-                  <button>
-                    <i className="fa fa-mouse-pointer" aria-hidden="true"></i>
-                  </button>
-                  <button>
-                    <i className="fa fa-phone" aria-hidden="true"></i>
-                  </button>
-                </div>
+              ))}
+
+              {/* Pagination Controls */}
+              <div className="d-flex justify-content-center align-items-center mt-4 gap-3">
+                <button
+                  className="botaoGeral"
+                  style={{ width: "auto", padding: "0 20px" }}
+                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                >
+                  Anterior
+                </button>
+                <span className="text-white">
+                  Página {currentPage} de {totalPages} ({totalItems} itens)
+                </span>
+                <button
+                  className="botaoGeral"
+                  style={{ width: "auto", padding: "0 20px" }}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                >
+                  Próxima
+                </button>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
 
         <div className="trabalheConosco pb-5">

@@ -18,10 +18,10 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const handleLogin = async (email, password) => {
-    console.log(`${backend}/api/auth/login`);
+    console.log(`${backend}/api/v1/auth/login`);
     try {
       const response = await axios.post(
-        `${backend}/api/auth/login`,
+        `${backend}/api/v1/auth/login`,
         { email, password }
       );
       localStorage.setItem("token", response.data.token);
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
   const handleRegister = async (fullName, email, password) => {
     try {
       const response = await axios.post(
-        `${backend}/api/auth/register`,
+        `${backend}/api/v1/auth/register`,
         {
           fullName,
           email,
