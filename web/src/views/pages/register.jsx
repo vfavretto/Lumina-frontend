@@ -183,7 +183,9 @@ const Register = () => {
 
       setMessage("Perfil atualizado com sucesso!");
       console.log("Resposta do backend:", response.data);
+      localStorage.setItem("userImg", response.data.empresa.userImg);
       navigate(`/profile/${id}`);
+      
     } catch (error) {
       console.error(
         "Erro ao enviar formulário:",
