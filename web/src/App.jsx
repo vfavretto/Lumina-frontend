@@ -20,19 +20,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
-          <Route path="chat" element={<Chat/>}/>
+          <Route path="chat" element={<Chat />} />
           <Route path="/about" element={<About />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register/>} />
-          <Route 
-            path="/profile/:id" 
+          <Route path="/profile/:id" element={<Profile />} />
+          <Route
+            path="/register/:id"
             element={
               <ProtectedRoute>
-                <Profile />
+                <Register />
               </ProtectedRoute>
-            } 
+            }
           />
         </Routes>
         <Footer />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import do useNavigate
 import "../../assets/styles/partners.css";
 
 const Partners = () => {
@@ -11,18 +12,19 @@ const Partners = () => {
   const [totalItems, setTotalItems] = useState(0);
   const limit = 10;
 
-  const BASE_URL = "https://lumina-backend-three.vercel.app/api/v1/auth";
+  const backend = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate(); // Hook para navegação
 
   const fetchData = async () => {
     try {
       setLoading(true);
       const tipo = ativo === "CONTRATANTE" ? "contratante" : "fornecedor";
       const response = await fetch(
-        `${BASE_URL}/enterprises?tipo=${tipo}&page=${currentPage}&limit=${limit}`
+        `${backend}/api/v1/auth/enterprises?tipo=${tipo}&page=${currentPage}&limit=${limit}`
       );
       
       if (!response.ok) {
-        throw new Error('Erro ao buscar dados');
+        throw new Error("Erro ao buscar dados");
       }
 
       const data = await response.json();
@@ -52,12 +54,13 @@ const Partners = () => {
   };
 
   const filteredDados = dados.filter((item) =>
-    item.auth?.nomeEmpresa?.toLowerCase().includes(searchTerm.toLowerCase())
+    item.auth?.userName?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="body overflow-hidden">
       <div className="paginaParceiros">
+        {/* Botões Contratante/Fornecedor */}
         <div className="botoesPrincipais">
           <div className="arrumarBotoes">
             <div className="botaoContainer">
@@ -82,6 +85,7 @@ const Partners = () => {
           </div>
         </div>
 
+        {/* Campo de Busca */}
         <div className="buscarEmpresa">
           <form role="search">
             <input
@@ -95,49 +99,32 @@ const Partners = () => {
               onChange={handleSearch}
               aria-label="Search"
             />
-            <label htmlFor="buscarEmpresa">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="45"
-                height="45"
-                viewBox="0 0 45 45"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_8_9)">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M30.0503 31.7597C26.8611 34.5503 22.6872 36.2416 18.1208 36.2416C8.11208 36.2416 0 28.1295 0 18.1208C0 8.11208 8.11208 0 18.1208 0C28.1295 0 36.2416 8.11208 36.2416 18.1208C36.2416 22.6872 34.5503 26.8671 31.7597 30.0503L44.6436 42.9342C45.1148 43.4054 45.1148 44.1725 44.6436 44.6436C44.1725 45.1148 43.4054 45.1148 42.9342 44.6436L30.0503 31.7597ZM33.8255 18.1208C33.8255 26.7946 26.7946 33.8255 18.1208 33.8255C9.44698 33.8255 2.41611 26.7946 2.41611 18.1208C2.41611 9.44698 9.44698 2.41611 18.1208 2.41611C26.7946 2.41611 33.8255 9.44698 33.8255 18.1208Z"
-                    fill="white"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_8_9">
-                    <rect width="45" height="45" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </label>
           </form>
         </div>
 
+        {/* Lista de Empresas */}
         <div className="empresas">
           {loading ? (
             <div className="text-center text-white">Carregando...</div>
           ) : (
             <div className="d-flex flex-column listaEmpresas">
               {filteredDados.map((item) => (
-                <div key={item._id} className="d-flex align-items-center itemParceiros">
+                <div
+                  key={item._id}
+                  className="d-flex align-items-center itemParceiros"
+                  onClick={() => navigate(`/profile/${item._id}`)} // Navegação ao clicar
+                  style={{ cursor: "pointer" }} // Indica que é clicável
+                >
                   <div className="imgParceiros">
                     <img
                       src={item.userImg || `../images/parceiros/default.png`}
-                      alt={`Parceiro ${item.auth.nomeEmpresa}`}
+                      alt={`Parceiro ${item.auth.userName}`}
                       width="200"
                     />
                   </div>
                   <div className="textoParceiros">
-                    <h2>{item.auth.nomeEmpresa}</h2>
-                    <p>{item.servicos?.descricao || 'Descrição não disponível'}</p>
+                    <h2>{item.auth.userName}</h2>
+                    <p>{item.descricao || "Descrição não disponível"}</p>
                   </div>
                   <div className="d-flex botoesParceiros">
                     <button>
@@ -150,7 +137,7 @@ const Partners = () => {
                 </div>
               ))}
 
-              {/* Pagination Controls */}
+              {/* Paginação */}
               <div className="d-flex justify-content-center align-items-center mt-4 gap-3">
                 <button
                   className="botaoGeral"
@@ -178,6 +165,7 @@ const Partners = () => {
           )}
         </div>
 
+        {/* Trabalhe Conosco */}
         <div className="trabalheConosco pb-5">
           <h2>Quer trabalhar conosco?</h2>
           <button className="botaoGeral">Cadastro</button>

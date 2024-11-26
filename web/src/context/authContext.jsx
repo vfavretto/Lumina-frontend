@@ -11,28 +11,45 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
+    const userId = localStorage.getItem("userId");
+    
+    console.log("Initial Auth Check - Token:", token);
+    console.log("Initial Auth Check - UserID:", userId);
+
+    if (token && userId) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setIsAuth(true);
     }
   }, []);
 
   const handleLogin = async (email, password) => {
-    console.log(`${backend}/api/v1/auth/login`);
     try {
       const response = await axios.post(
         `${backend}/api/v1/auth/login`,
         { email, password }
       );
+      
+      console.log("Login Response:", response.data);
+
+      const userId = response.data.empresa._id || response.data.empresa?._id;
+      
+      if (!userId) {
+        throw new Error("User ID not found in the response");
+      }
+
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", userId.toString());
+      
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.token}`;
+      
       setIsAuth(true);
       setError(null);
 
       return response.data;
     } catch (error) {
+      console.error("Login Error:", error);
       if (error.response) {
         setError(error.response.data.error);
       } else {
@@ -47,18 +64,32 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post(
         `${backend}/api/v1/auth/register`,
         {
-          fullName,
-          email,
-          password,
+          "userName": fullName,
+          "email": email,
+          "password": password,
         }
       );
+      
+      console.log("Register Response:", response.data);
+
+      const userId = response.data.empresa._id || response.data.empresa?._id;
+      
+      if (!userId) {
+        throw new Error("User ID not found in the response");
+      }
+
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", userId.toString()); // Convert to string
+      
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.token}`;
+      
       setIsAuth(true);
       setError(null);
+      return response.data;
     } catch (error) {
+      console.error("Register Error:", error);
       if (error.response) {
         setError(error.response.data.error);
       } else {
@@ -68,11 +99,19 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    setIsAuth(false);
+    delete axios.defaults.headers.common["Authorization"];
+  };
+
   const value = {
     isAuth,
     error,
     handleLogin,
     handleRegister,
+    handleLogout,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

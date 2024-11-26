@@ -18,8 +18,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await handleLogin(userName, password);
-      const userId = response.user._id;
-      navigate(`/profile/${userId}`);
+      const empresaId = response.empresa._id;
+      navigate(`/profile/${empresaId}`);
     } catch (error) {
       console.error("Erro no login:", error);
     }
@@ -32,8 +32,9 @@ const Login = () => {
       return;
     }
     try {
-      await handleRegister(fullName, email, password);
-      navigate("/login");
+      const registrationResponse = await handleRegister(fullName, email, password);
+      const empresaId = registrationResponse.empresa?._id;
+      navigate(`/register/${empresaId}`);
     } catch (error) {
       console.error("Erro no registro:", error);
     }
