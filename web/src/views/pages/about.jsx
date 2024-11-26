@@ -28,27 +28,27 @@ return(
               <div className="membro">
                 <img src={foto1} className="fotinha" alt="Ana Laura" />
                 <h3>Ana Laura <br /> Lazdenas</h3>
-                <p>18 anos <br /> Estudante</p>
+                <p>19 anos <br /> Auxiliar Administrativa</p>
               </div>
               <div className="membro">
                 <img src={foto2} className="fotinha" alt="Felipe" />
                 <h3>Felipe <br /> Rodrigues</h3>
-                <p>24 anos <br /> Pro player</p>
+                <p>25 anos <br /> Pro player</p>
               </div>
               <div className="membro">
                 <img src={foto3} className="fotinha" alt="Júlia" />
                 <h3>Júlia <br /> Soares</h3>
-                <p>23 anos <br /> Designer e Ilustradora</p>
+                <p>25 anos <br /> Designer e Ilustradora</p>
               </div>
               <div className="membro">
                 <img src={foto4} className="fotinha" alt="Murilo" />
                 <h3>Murilo <br /> Rodrigues</h3>
-                <p>26 anos <br /> Técnico de Hardware</p>
+                <p>27 anos <br /> Técnico de Hardware</p>
               </div>
               <div className="membro">
                 <img src={foto5} className="fotinha" alt="Victor" />
                 <h3>Victor <br /> Favreto</h3>
-                <p>26 anos <br /> Advogado</p>
+                <p>27 anos <br /> Advogado</p>
               </div>
             </div>
           </div>
