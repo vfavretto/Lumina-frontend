@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/authContext";
@@ -6,37 +6,82 @@ import "../../assets/styles/login.css";
 import imgbar from "../../assets/images/Perfil/mensagensPerfil.png";
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(null);
+  const [registrationError, setRegistrationError] = useState(null);
+  const [loginUserName, setLoginUserName] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
   const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [registrationPassword, setRegistrationPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [showPasswordTooltip, setShowPasswordTooltip] = useState(false);
+
   const { handleLogin, handleRegister, error } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setLoginError(null);
+
     try {
-      const response = await handleLogin(userName, password);
+      const response = await handleLogin(loginUserName, loginPassword);
       const empresaId = response.empresa._id;
       navigate(`/profile/${empresaId}`);
     } catch (error) {
       console.error("Erro no login:", error);
+      setLoginError("Não foi possível fazer login. Verifique suas credenciais.");
     }
+  };
+
+  const validatePassword = (password) => {
+    const errors = [];
+
+    if (password.length < 8) {
+      errors.push("Senha deve ter no mínimo 8 caracteres");
+    }
+    if (!/[A-Z]/.test(password)) {
+      errors.push("Senha deve conter pelo menos uma letra maiúscula");
+    }
+    if (!/[a-z]/.test(password)) {
+      errors.push("Senha deve conter pelo menos uma letra minúscula");
+    }
+    if (!/\d/.test(password)) {
+      errors.push("Senha deve conter pelo menos um número");
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      errors.push("Senha deve conter pelo menos um caractere especial");
+    }
+
+    return errors;
   };
 
   const onRegister = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("As senhas não coincidem!");
+    setRegistrationError(null);
+
+    if (registrationPassword !== confirmPassword) {
+      setRegistrationError("As senhas não coincidem!");
       return;
     }
+
+    const passwordErrors = validatePassword(registrationPassword);
+    if (passwordErrors.length > 0) {
+      setRegistrationError(passwordErrors[0]); // Show first error
+      return;
+    }
+
     try {
-      const registrationResponse = await handleRegister(fullName, email, password);
+      const registrationResponse = await handleRegister(
+        fullName,
+        email,
+        registrationPassword
+      );
       const empresaId = registrationResponse.empresa?._id;
       navigate(`/register/${empresaId}`);
     } catch (error) {
       console.error("Erro no registro:", error);
+      setRegistrationError("Não foi possível realizar o cadastro. Tente novamente.");
     }
   };
 
@@ -46,7 +91,7 @@ const Login = () => {
         <div className="fundinRegistro row">
           <div className="col divDireita">
             <div className="justify-content-start bemVindo">
-              {error && <div className="alert alert-danger">{error}</div>}
+              {loginError && <div className="alert alert-danger">{loginError}</div>}
               <div>
                 <h2 className="d-flex text-white welcome">BEM-VINDO!</h2>
               </div>
@@ -133,8 +178,8 @@ const Login = () => {
                       placeholder="E-mail ou nome de usuário"
                       name="userName"
                       id="loginUserName"
-                      value={userName}
-                      onChange={(e) => setUserName(e.target.value)}
+                      value={loginUserName}
+                      onChange={(e) => setLoginUserName(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">
@@ -148,8 +193,8 @@ const Login = () => {
                       placeholder="Senha"
                       name="password"
                       id="loginPassword"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      value={loginPassword}
+                      onChange={(e) => setLoginPassword(e.target.value)}
                     />
                   </div>
                   <div className="row justify-content-center">
@@ -164,6 +209,8 @@ const Login = () => {
           <div className="col zikaMargem">
             <div className="justify-content-end formsCadastro">
               <form className="formularioCadastro" onSubmit={onRegister}>
+                {registrationError && <div className="alert alert-danger">{registrationError}</div>}
+                
                 <div className="textCadastro">
                   <h3 className="d-flex text-white">CADASTRE-SE AQUI</h3>
                 </div>
@@ -197,17 +244,51 @@ const Login = () => {
                       />
                     </div>
                   </div>
-                  <div className="row mb-3">
+                  <div className="row mb-3 position-relative">
                     <label className="col-sm-2 col-form-label"></label>
-                    <div className="col-sm-8">
+                    <div className="col-sm-8 position-relative">
                       <input
                         type="password"
                         className="form-control"
                         placeholder="🔑 Digite uma senha"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={registrationPassword}
+                        onChange={(e) => setRegistrationPassword(e.target.value)}
+                        onFocus={() => setShowPasswordTooltip(true)}
+                        onBlur={() => setShowPasswordTooltip(false)}
                         required
                       />
+                      {showPasswordTooltip && (
+                        <div 
+                          className="password-tooltip" 
+                          style={{
+                            position: 'absolute',
+                            top: '0',
+                            left: '105%',
+                            width: '250px',
+                            backgroundColor: '#262625',
+                            color: '#A0BB9C',
+                            padding: '8px',
+                            borderRadius: '5px',
+                            fontSize: '17px',
+                            boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+                            zIndex: 10,
+                            border: '1px solid #A0BB9C'
+                          }}
+                        >
+                          Sua senha deve conter:
+                          <ul style={{
+                            listStyleType: 'none', 
+                            paddingLeft: '10px',
+                            margin: '5px 0 0 0'
+                          }}>
+                            <li>✦ 8 ou mais caracteres</li>
+                            <li>✦ 1 maiúscula</li>
+                            <li>✦ 1 minúscula</li>
+                            <li>✦ 1 número</li>
+                            <li>✦ 1 caractere especial</li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="row mb-3">

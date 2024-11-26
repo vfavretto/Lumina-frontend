@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "../../../assets/styles/chat.css";
 import PropTypes from "prop-types";
+import noImg from "../../../assets/images/Perfil/no_profile.jpg"
 
 const ChatMessage = ({ text, isSent }) => (
   <div className={`message ${isSent ? "sent" : "received"}`}>
@@ -165,7 +166,7 @@ const Chat = ({ chatPartner, onClose }) => {
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
             <img 
-              src={chatPartner.userImg} 
+              src={chatPartner.userImg === "" || !chatPartner.userImg ? noImg : chatPartner.userImg} 
               alt={`Foto de ${chatPartner.nomeEmpresa}`} 
               className="chat-partner-img mr-3" 
               style={{width: "40px", height: "40px", borderRadius: "50%", marginRight: "10px"}}

@@ -12,9 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
-    
-    console.log("Initial Auth Check - Token:", token);
-    console.log("Initial Auth Check - UserID:", userId);
+    const userImg = localStorage.getItem("userImg");
 
     if (token && userId) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -32,6 +30,7 @@ export const AuthProvider = ({ children }) => {
       console.log("Login Response:", response.data);
 
       const userId = response.data.empresa._id || response.data.empresa?._id;
+      const userImg = response.data.empresa.userImg || response.data.empresa?.userImg;
       
       if (!userId) {
         throw new Error("User ID not found in the response");
@@ -39,6 +38,7 @@ export const AuthProvider = ({ children }) => {
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("userId", userId.toString());
+      localStorage.setItem("userImg", userImg);
       
       axios.defaults.headers.common[
         "Authorization"
@@ -73,13 +73,15 @@ export const AuthProvider = ({ children }) => {
       console.log("Register Response:", response.data);
 
       const userId = response.data.empresa._id || response.data.empresa?._id;
+      const userImg = response.data.empresa.userImg || response.data.empresa?.userImg;
       
       if (!userId) {
         throw new Error("User ID not found in the response");
       }
 
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("userId", userId.toString()); // Convert to string
+      localStorage.setItem("userId", userId.toString());
+      localStorage.setItem("userImg", userImg);
       
       axios.defaults.headers.common[
         "Authorization"

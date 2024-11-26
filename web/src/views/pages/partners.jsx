@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import do useNavigate
+import { useNavigate } from "react-router-dom";
 import "../../assets/styles/partners.css";
+import LoadingSpinner from "../components/common/loadingSpinner";
+import noImg from "../../assets/images/Perfil/no_profile.jpg";
 
 const Partners = () => {
   const [ativo, setAtivo] = useState("CONTRATANTE");
@@ -13,7 +15,7 @@ const Partners = () => {
   const limit = 10;
 
   const backend = import.meta.env.VITE_BACKEND_URL;
-  const navigate = useNavigate(); // Hook para navegação
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -28,7 +30,7 @@ const Partners = () => {
       }
 
       const data = await response.json();
-      setDados(data.empresas || []); // Ajustado para usar data.empresas
+      setDados(data.empresas || []);
       setTotalPages(data.totalPages);
       setTotalItems(data.totalEmpresas);
     } catch (error) {
@@ -56,6 +58,20 @@ const Partners = () => {
   const filteredDados = dados.filter((item) =>
     item.auth?.userName?.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleMouseButton = (item) => {
+    if (item.siteEmpresa) {
+      window.open(item.siteEmpresa, '_blank');
+    } else {
+      alert('Nenhum site disponível para esta empresa.');
+    }
+  };
+
+  const handlePhoneButton = (item) => {
+    navigate(`/profile/${item._id}`, { 
+      state: { startChat: true } 
+    });
+  };
 
   return (
     <div className="body overflow-hidden">
@@ -105,19 +121,19 @@ const Partners = () => {
         {/* Lista de Empresas */}
         <div className="empresas">
           {loading ? (
-            <div className="text-center text-white">Carregando...</div>
+            <LoadingSpinner />
           ) : (
             <div className="d-flex flex-column listaEmpresas">
               {filteredDados.map((item) => (
                 <div
                   key={item._id}
                   className="d-flex align-items-center itemParceiros"
-                  onClick={() => navigate(`/profile/${item._id}`)} // Navegação ao clicar
-                  style={{ cursor: "pointer" }} // Indica que é clicável
+                  onClick={() => navigate(`/profile/${item._id}`)}
+                  style={{ cursor: "pointer" }}
                 >
                   <div className="imgParceiros">
                     <img
-                      src={item.userImg || `../images/parceiros/default.png`}
+                      src={item.userImg === "" || !item.userImg ? noImg : item.userImg}
                       alt={`Parceiro ${item.auth.userName}`}
                       width="200"
                     />
@@ -127,10 +143,20 @@ const Partners = () => {
                     <p>{item.descricao || "Descrição não disponível"}</p>
                   </div>
                   <div className="d-flex botoesParceiros">
-                    <button>
+                  <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleMouseButton(item);
+                      }}
+                    >
                       <i className="fa fa-mouse-pointer" aria-hidden="true"></i>
                     </button>
-                    <button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePhoneButton(item);
+                      }}
+                    >
                       <i className="fa fa-phone" aria-hidden="true"></i>
                     </button>
                   </div>

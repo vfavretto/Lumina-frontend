@@ -8,6 +8,7 @@ const Register = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
     userName: "",
     nomeResponsavel: "",
@@ -40,6 +41,7 @@ const Register = () => {
 
   useEffect(() => {
     const fetchEmpresaData = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(
           `${backend}/api/v1/auth/profile/${id}`,
@@ -81,16 +83,65 @@ const Register = () => {
       } catch (error) {
         console.error("Erro ao buscar dados da empresa:", error);
         setMessage("Erro ao carregar dados do perfil.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchEmpresaData();
   }, [id, backend]);
 
+  const isProfileComplete = () => {
+    const mainFields = [
+      'nomeResponsavel', 
+      'cargoResponsavel', 
+      'nomeEmpresa', 
+      'tipoEmpresa', 
+      'telefoneEmpresa', 
+      'CNPJ', 
+      'siteEmpresa'
+    ];
+
+    return mainFields.every(field => {
+      if (field === 'nomeEmpresa' || field === 'tipoEmpresa') {
+        return formData[field] && formData[field].trim() !== '';
+      }
+      return formData[field] && formData[field].trim() !== '';
+    });
+  };
+
+  const LoadingSpinner = () => (
+    <div className="loading-spinner-container" style={{
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh'
+    }}>
+      <div className="spinner" style={{
+        border: '4px solid #f3f3f3',
+        borderTop: '4px solid #2FAC66',
+        borderRadius: '50%',
+        width: '50px',
+        height: '50px',
+        animation: 'spin 1s linear infinite'
+      }}>
+        <style>{`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
+      </div>
+    </div>
+  );
+  
+  if (isLoading) {
+    return <LoadingSpinner fullScreen= {true} />;
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Tratamento para campos aninhados (endereco e redesSociais)
     if (name.startsWith("endereco.")) {
       const field = name.split(".")[1];
       setFormData((prevState) => ({
@@ -147,7 +198,9 @@ const Register = () => {
   return (
     <main className="profile-page">
       <div className="container">
-        <h1 className="titleProfile">Complete Seu Perfil</h1>
+        <h1 className="titleProfile">
+          {isProfileComplete() ? "Editar Perfil" : "Complete Seu Perfil"}
+        </h1>
         {message && <p className="message">{message}</p>}
         <form onSubmit={handleSubmit} className="formRegister">
           <section className="company-info">

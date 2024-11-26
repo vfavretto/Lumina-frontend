@@ -1,13 +1,15 @@
 import "../../assets/styles/profile.css";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import perfilMsgimg from "../../assets/images/Perfil/mensagensPerfil.png";
 import Chat from "../components/common/chat";
+import noImg from "../../assets/images/Perfil/no_profile.jpg"
 
 const Profile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [userData, setUserData] = useState(null);
   const [conversas, setConversas] = useState([]);
   const [selectedConversation, setSelectedConversation] = useState(null);
@@ -16,47 +18,39 @@ const Profile = () => {
   const [chatMode, setChatMode] = useState(false);
   const [chatPartner, setChatPartner] = useState(null);
   const backend = import.meta.env.VITE_BACKEND_URL;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const loggedInUserId = localStorage.getItem("userId");
-
     const fetchProfileData = async () => {
+      const token = localStorage.getItem("token");
+      const loggedInUserId = localStorage.getItem("userId");
+
       try {
         let response;
-        // Check if viewing own profile
         if (token && loggedInUserId?.toString() === id?.toString()) {
-          console.log("Matching IDs - Fetching own profile");
           setIsOwnProfile(true);
+
           response = await axios.get(
             `${backend}/api/v1/auth/profile/${loggedInUserId}`,
             {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
+              headers: { Authorization: `Bearer ${token}` },
             }
           );
 
-          // Fetch conversations for logged-in user
           const conversasResponse = await axios.get(
             `${backend}/api/v1/messages/${loggedInUserId}`,
             {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
+              headers: { Authorization: `Bearer ${token}` },
             }
           );
 
-          // Fetch last message for each conversation
           const conversasComUltimaMensagem = await Promise.all(
             conversasResponse.data.map(async (conversa) => {
               try {
                 const ultimaMensagemResponse = await axios.get(
                   `${backend}/api/v1/messages/ultima-mensagem/${loggedInUserId}/${conversa._id}`,
                   {
-                    headers: {
-                      Authorization: `Bearer ${token}`,
-                    },
+                    headers: { Authorization: `Bearer ${token}` },
                   }
                 );
                 return {
@@ -72,12 +66,10 @@ const Profile = () => {
 
           setConversas(conversasComUltimaMensagem);
         } else if (token) {
-          // Authenticated user viewing another profile
           response = await axios.get(
             `${backend}/api/v1/auth/profilePublic/${id}`
           );
         } else {
-          // Public profile view
           response = await axios.get(
             `${backend}/api/v1/auth/profilePublic/${id}`
           );
@@ -87,18 +79,31 @@ const Profile = () => {
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
         setError("Erro ao carregar os dados.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchProfileData();
   }, [id, backend]);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    
+    if (!isLoading && userData && token && location.state?.startChat) {
+
+      window.history.replaceState(null, '', location.pathname);
+      
+      handleStartChat();
+    }
+  }, [isLoading, userData, location.state]);
+
   const handleConversationSelect = (conversa) => {
     setSelectedConversation(conversa);
     setChatMode(true);
     setChatPartner(conversa);
   };
-
+  
   const openSocialLink = (url) => {
     if (url) window.open(url, "_blank");
   };
@@ -124,10 +129,39 @@ const Profile = () => {
     setSelectedConversation(null);
   };
 
+  const LoadingSpinner = () => (
+    <div className="loading-spinner-container" style={{
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh'
+    }}>
+      <div className="spinner" style={{
+        border: '4px solid #f3f3f3',
+        borderTop: '4px solid #2FAC66',
+        borderRadius: '50%',
+        width: '50px',
+        height: '50px',
+        animation: 'spin 1s linear infinite'
+      }}>
+        <style>{`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
+      </div>
+    </div>
+  );
+
+  if (isLoading) {
+    return <LoadingSpinner fullScreen={true} />;
+  }
+
   if (error) return <div>{error}</div>;
-  if (!userData) return <div>Carregando...</div>;
 
   const isAuthenticated = !!localStorage.getItem("token");
+
 
   return (
     <div id="perfil">
@@ -137,7 +171,7 @@ const Profile = () => {
             <figure>
               <img
                 className="perfilFoto"
-                src={userData.userImg}
+                src={userData.userImg === "" || !userData.userImg ? noImg : userData.userImg}
                 alt="Imagem de perfil"
               />
               <h5 className="perfilNome">{userData.nomeEmpresa}</h5>
@@ -176,13 +210,13 @@ const Profile = () => {
                     {conversas.map((conversa) => (
                       <div
                         key={conversa._id}
-                        className="d-flex justify-content-center align-items-center"
+                        className=""
                         id="perfilFotinha"
                         onClick={() => handleConversationSelect(conversa)}
                       >
                         <div id="perfilFoto">
                           <img
-                            src={conversa.userImg}
+                            src={conversa.userImg === "" || !conversa.userImg ? noImg : conversa.userImg}
                             alt={`Foto de perfil ${conversa.nomeEmpresa}`}
                           />
                         </div>
