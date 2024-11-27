@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import blog1 from ".././../assets/images/blog/blog2.png"
+import blog2 from ".././../assets/images/blog/blog3.png"
+import blog3 from ".././../assets/images/blog/blog4.png"
+import "../../assets/styles/blog.css";
 
 const Blog = () => {
   const [noticias] = useState(dadosBlog.NOTICIAS);
@@ -17,7 +21,7 @@ const Blog = () => {
               {noticias.map((noticia) => (
                 <div key={noticia.id} className="d-flex align-items-start blog mb-4">
                   <img
-                    src="/api/placeholder/400/300"
+                    src={noticia.img}
                     className="rounded float-start"
                     alt={noticia.nome}
                   />
@@ -57,21 +61,21 @@ const dadosBlog = {
   NOTICIAS: [
     { 
       id: 1, 
-      nome: "Cientistas Alcançam Novo Patamar na Computação Quântica", 
-      descricao: "Pesquisadores anunciam avanço surpreendente na computação quântica, atingindo um marco significativo que pode revolucionar...",
-      img: "/api/placeholder/400/300"
+      nome: "Cientistas Avançam em Processamento de Dados", 
+      descricao: "Pesquisadores anunciaram um avanço histórico na computação quântica, rompendo barreiras tecnológicas que ampliam a capacidade de processamento de dados. O marco promete transformar áreas como inteligência artificial e pesquisa científica, aproximando-se de um futuro onde problemas complexos poderão ser resolvidos com rapidez e eficiência.",
+      img: blog1
     },
     { 
       id: 2, 
-      nome: "Desenvolvedores criam código que Economiza nas impressões", 
-      descricao: "Em busca de soluções mais sustentáveis, desenvolvedores criaram um código inovador que promete reduzir significativamente...",
-      img: "/api/placeholder/400/300"
+      nome: "Tecnologia Deve Reduzir Impacto Ambiental em Impressões", 
+      descricao: "Desenvolvedores lançaram um código inovador que otimiza o uso de tinta e papel, diminuindo os custos de impressão e os resíduos gerados. A solução, voltada para empresas e consumidores, combina eficiência e sustentabilidade, promovendo uma alternativa prática para reduzir o impacto ambiental sem comprometer a qualidade das impressões.",
+      img: blog2
     },
     { 
       id: 3, 
-      nome: "No coração da tecnologia: Descubra como os dispositivos funcionam", 
-      descricao: "Em um mundo cada vez mais conectado, entender como os dispositivos funcionam é essencial. De smartphones a assistentes...",
-      img: "/api/placeholder/400/300"
+      nome: "Dispositivos que Conectam o Mundo", 
+      descricao: "Em um mundo cada vez mais conectado, entender como funcionam os dispositivos tornou-se essencial. De smartphones a assistentes virtuais, a tecnologia que usamos diariamente é composta por sistemas complexos. Compreender esses mecanismos ajuda a expandir nosso conhecimento sobre inovação e a promover um uso mais consciente da tecnologia.",
+      img: blog3
     }
   ]
 };

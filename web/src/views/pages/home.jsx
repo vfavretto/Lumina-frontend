@@ -15,27 +15,27 @@ const Home = () => {
   const blogItems = [
     {
       img: imgBlog2,
-      title: "Cientistas Alcançam Novo Patamar na Computação Quântica1",
+      title: "Cientistas Avançam em Processamento de Dados",
     },
     {
       img: imgBlog3,
-      title: "Reciclagem de Eletrônicos: Conheça os benefícios dessa Nova Tecnologia2",
+      title: "Tecnologia Deve Reduzir Impacto Ambiental em Impressões",
     },
     {
       img: imgBlog4,
-      title: "Desenvolvedores criam código que Economiza nas impressões3",
+      title: "Dispositivos que Conectam o Mundo",
     },
     {
       img: imgBlog2,
-      title: "Cientistas Alcançam Novo Patamar na Computação Quântica4",
+      title: "Cientistas Avançam em Processamento de Dados",
     },
     {
       img: imgBlog3,
-      title: "Reciclagem de Eletrônicos: Conheça os benefícios dessa Nova Tecnologia5",
+      title: "Tecnologia Deve Reduzir Impacto Ambiental em Impressões",
     },
     {
       img: imgBlog4,
-      title: "Desenvolvedores criam código que Economiza nas impressões6",
+      title: "Dispositivos que Conectam o Mundo",
     },
   ];
 
