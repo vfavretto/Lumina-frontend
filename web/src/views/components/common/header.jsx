@@ -1,9 +1,38 @@
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../../assets/styles/header.css";
 import whiteLogo from "../../../assets/images/whiteLogo.png";
 import whiteLogoMini from "../../../assets/images/whiteLogoMini.png";
+import AuthContext from "../../../context/authContext";
+import noImg from "../../../assets/images/Perfil/no_profile.jpg"
 
 const Header = () => {
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const { isAuth, handleLogout } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const userImg = localStorage.getItem("userImg");
+  const userId = localStorage.getItem("userId");
+
+  const toggleUserMenu = () => {
+    setUserMenuOpen(!userMenuOpen);
+  };
+
+  const handleProfileClick = () => {
+    navigate(`/profile/${userId}`);
+    setUserMenuOpen(false);
+  };
+
+  const handleEditClick = () => {
+    navigate(`/register/${userId}`);
+    setUserMenuOpen(false);
+  };
+
+  const handleLogoutClick = () => {
+    handleLogout();
+    navigate("/");
+    setUserMenuOpen(false);
+  };
+
   return (
     <header className="body">
       <nav className="navbar navbar-expand-xl navbar-dark">
@@ -92,9 +121,42 @@ const Header = () => {
               </form>
 
               <div className="d-flex justify-content-center align-items-center gap-3">
-                <a href="/login" className="text-white">
-                  <input type="button" value="Login" id="loginBtn" />
-                </a>
+                {isAuth ? (
+                  <div className="user-menu-container">
+                    <img
+                      src={userImg === "" || userImg === "undefined" ? noImg : userImg}
+                      alt="User Profile"
+                      className="user-profile-img"
+                      onClick={toggleUserMenu}
+                    />
+                    {userMenuOpen && (
+                      <div className="user-menu">
+                        <button 
+                          onClick={handleProfileClick}
+                          className="user-menu-item"
+                        >
+                          <i className="fas fa-user"></i> Perfil
+                        </button>
+                        <button 
+                          onClick={handleEditClick}
+                          className="user-menu-item"
+                        >
+                          <i className="fas fa-edit"></i> Editar
+                        </button>
+                        <button 
+                          onClick={handleLogoutClick}
+                          className="user-menu-item logout"
+                        >
+                          <i className="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <a href="/login" className="text-white">
+                    <input type="button" value="Login" id="loginBtn" />
+                  </a>
+                )}
               </div>
             </div>
           </div>

@@ -81,3 +81,67 @@
         background-color: #2626253c;
     }
 }
+
+/* Existing styles... */
+
+.user-menu-container {
+    position: relative;
+  }
+  
+  .user-profile-img {
+    margin-left: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2fac66;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .user-profile-img:hover {
+    transform: scale(1.1);
+  }
+  
+  .user-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  .user-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+  
+  .user-menu-item:hover {
+    background-color: rgba(45, 45, 45, 0.8);
+  }
+  
+  .user-menu-item i {
+    color: #2fac66;
+    margin-right: 10px;
+  }
+  
+  .user-menu-item.logout {
+    color: #ff4d4d;
+  }
+  
+  .user-menu-item.logout i {
+    color: #ff4d4d;
+  }

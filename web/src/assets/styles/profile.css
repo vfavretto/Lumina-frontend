@@ -1,133 +1,200 @@
 #perfil {
-    background-color: rgb(26, 26, 25);
-
+  background-color: rgb(26, 26, 25);
 }
 
 .perfilFoto {
-    border-radius: 50%;
-    width: 85%;
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
-    margin: 10%;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
+  margin: 10%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #2fac66;
 }
 
 .perfilNome {
-    color: var(--branco, #FFF);
-    font-family: Poppins;
-    font-size: 250%;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-
+  color: var(--branco, #fff);
+  font-family: Poppins;
+  font-size: 250%;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .perfilCargo {
-
-    color: var(--branco, #FFF);
-    font-family: Poppins;
-    font-size: 170%;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-
+  color: var(--branco, #fff);
+  font-family: Poppins;
+  font-size: 170%;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
 .perfilEmpresa {
-    color: #2FAC66;
-    font-family: Poppins;
-    font-size: 110%;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-
+  color: #2fac66;
+  font-family: Poppins;
+  font-size: 110%;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
-
-
 #perfil h5 {
-    margin-left: 10%;
+  margin-left: 10%;
 }
 
 #perfil p {
-    color: #FFFFFF;
-    margin-top: 10%;
-    margin-bottom: 5%;
-    font-family: Poppins;
-    font-size: medium;
-    font-weight: 100;
-    text-align: justify;
-    line-height: 155%;
-
+  color: #ffffff;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  font-family: Poppins;
+  font-size: medium;
+  font-weight: 100;
+  text-align: justify;
+  line-height: 155%;
 }
 
 .perfilMensagens {
-    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.40);
-
+  box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.4);
 }
 
 .perfilMsgimg {
-    width: 100%;
+  width: 100%;
 }
 
-
 #perfilMsg h1 {
-    color: #FFFF;
-    text-align: left;
-    font-family: Poppins;
-    font-weight: 700;
-    font-size: 200%;
-    margin-left: 15%;
-
+  color: #ffff;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 200%;
+  margin-left: 15%;
 }
 
 #sininhoPerfil {
-    color: var(--branco);
-    font-size: 180%;
-
-
+  color: var(--branco);
+  font-size: 180%;
 }
 
 #perfilFoto img {
-    width: 100px;
-    border-radius: 50%;
-    margin: 0px 50px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 0px 50px;
 }
 
 #perfilFoto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #nomepessoa p {
-    margin-top: 1%;
-    font-size: small;
-    text-align: left;
-    margin-bottom: 0%;
+  margin-top: 1%;
+  font-size: small;
+  text-align: left;
+  margin-bottom: 0%;
 }
 
 #bolinha {
-    color: #129E97;
-    margin: 0% 8%;
+  color: #129e97;
+  margin: 0% 8%;
 }
 
 #nomepessoa h2 {
-    color: #12A19A;
-    font-family: Poppins;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  color: #12a19a;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 #perfilFotinha {
-    align-items: center;
-    justify-content: space-evenly;
-    padding-bottom: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4%;
 }
 
 #perfilMsg div {
-    margin-left: 0%;
-    margin-right: 0%;
-    padding-right: 8%;
-    margin-bottom: 2%;
+  margin-left: 0%;
+  margin-right: 0%;
+  padding-right: 8%;
+  margin-bottom: 2%;
+}
+
+.public-profile-details {
+  background-color: rgba(45, 45, 45, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.public-profile-details h2 {
+  color: #2fac66;
+  font-family: Poppins;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #2fac66;
+  padding-bottom: 10px;
+}
+
+.contact-section, 
+.social-section, 
+.services-section {
+  margin-bottom: 20px;
+}
+
+.contact-section p {
+  color: #ffffff;
+  font-family: Poppins;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.btn-social.facebook {
+  background-color: #3b5998;
+}
+
+.btn-social.instagram {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.btn-social.linkedin {
+  background-color: #0077b5;
+}
+
+.services-section ul {
+  color: white;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.btn-start-chat {
+  background-color: #2fac66;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-start-chat:hover {
+  background-color: #24915a;
 }

@@ -96,3 +96,122 @@ body {
 .formRedes{
   padding-top: 3%;
 }
+
+body {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+ 
+.profile-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+ 
+.titleProfile {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 300%;
+}
+ 
+.titleProfileInner {
+  color: #ffffff;
+  padding-bottom: 10px;
+  margin-top: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+ 
+.formRegister {
+  background-color: #2a2a2a;
+  padding: 30px;
+  border-radius: 8px;
+}
+ 
+.profile-page input, 
+.profile-page select, 
+.profile-page textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #3a3a3a;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+}
+ 
+.profile-page input::placeholder, 
+.profile-page select::placeholder, 
+.profile-page textarea::placeholder {
+  color: #999999;
+}
+ 
+.profile-page select option {
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+ 
+.profile-page .row {
+  display: flex;
+  gap: 15px;
+}
+ 
+.profile-page .row input, 
+.profile-page .row select {
+  flex: 1;
+}
+ 
+.profile-page textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.saveButton {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.save-button {
+  background-color: #2FAC66;
+  color: #ffffff;
+  border: none;
+  padding: 12px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: 20%;
+  margin-top: 20px;
+  align-content: center;
+}
+ 
+.save-button:hover {
+  background-color: #2FAC66;
+  opacity: 0.9;
+}
+ 
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  display: block;
+  border: 3px solid #2FAC66;
+}
+
+.profile-image-input {
+  margin-bottom: 20px;
+}
+
+.formRedes {
+  padding-top: 3%;
+}
+
+select option {
+  background-color: #3a3a3a !important;
+  color: #ffffff !important;
+}
