@@ -30,7 +30,7 @@
 | 01 | 30/08/2024 |  Concluída  ✔️  | [Relatório](https://github.com/vfavretto/Lumina-frontend/blob/sprint-01/README.md) |
 | 02 | 05/10/2024 |  Concluída  ✔️  | [Relatório](https://github.com/vfavretto/Lumina-frontend/blob/sprint-02/README.md) |
 | 03 | 04/11/2024 |  Concluída  ✔️  | [Relatório](https://github.com/vfavretto/Lumina-frontend/blob/sprint-03/README.md) |
-| 04 | 30/11/2024 |      | [Relatório](https://github.com/vfavretto/Lumina-frontend/blob/sprint-04/README.md) |
+| 04 | 30/11/2024 |  Concluída  ✔️  | [Relatório](https://github.com/vfavretto/Lumina-frontend/blob/sprint-04/README.md) |
 
 
 #### Detalhamento de Sprints disponível no [Jira](https://julinhasoares.atlassian.net/)
